@@ -1,24 +1,22 @@
 <template>
   <div id="app">
     <Header/>
-    <Content/>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import Header from "./components/header";
-import Content from "./components/content";
+import Header from "./components/Header";
 export default {
   name: 'App',
   components: {
-    Header,
-    Content
+    Header
   }
 }
 </script>
 
 <style>
-#app {
+*{
   margin: 0;
   padding: 0;
 }

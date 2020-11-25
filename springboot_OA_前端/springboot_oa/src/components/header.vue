@@ -2,6 +2,8 @@
     <div class="container">
        <ul>
            <li class="title">职工人事管理系统</li>
+           <router-link :to="{name: 'Login'}"><li class="login">登录</li></router-link>
+           <router-link :to="{name: 'Register'}"><li class="register">注册</li></router-link>
         </ul>
     </div>
 </template>
@@ -27,9 +29,9 @@ export default {
     background-color: #263f52;
     z-index: 100;
 }
-.title{
-    margin-top: -17px;
-    margin-left: 20px;
+.title, .login, .register{
+    position: absolute;
+    top: 0px;
     width: 150px;
     height: 50px;
     /*border: 1px solid #fff;*/
@@ -38,5 +40,15 @@ export default {
     list-style: none;
     line-height: 50px;
     font-weight: bold;
+    float: left;
+}
+.title{
+    left: 50px;
+}
+.login{
+    right: 100px;
+}
+.register{
+    right: 50px;
 }
 </style>

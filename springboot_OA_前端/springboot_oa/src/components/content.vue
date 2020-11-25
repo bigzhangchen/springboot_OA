@@ -1,18 +1,46 @@
 <template>
     <div class="content">
-        <SelectList/>
+        <SelectList @chooseIndex="handleChoose"/>
+        <label v-if="this.cIndex==1">
+            <Notice/>
+        </label>
+        <label v-if="this.cIndex==2">
+            <Leave/>
+        </label>
+        <label v-if="this.cIndex==3">
+            <Salary/>
+        </label>
     </div>
 </template>
 
 <script>
-import SelectList from "./selectList";
+import SelectList from "./SelectList";
+import Notice from "./Notice";
+import Leave from "./Leave";
+import Salary from "./Salary";
 export default {
     components: {
-        SelectList  
+        SelectList,
+        Notice,
+        Leave,
+        Salary 
+    },
+    data(){
+        return{
+            cIndex: 1 
+        }
+    },
+    methods: {
+        handleChoose(index){
+            this.cIndex = index;
+        }
     }
 }
 </script>
 
-<style>
-
+<style scoped>
+.content{
+    position: relative;
+    width: 100%;
+}
 </style>
