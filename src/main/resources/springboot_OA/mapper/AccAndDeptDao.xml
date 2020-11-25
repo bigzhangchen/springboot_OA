@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+        namespace="springboot_OA.mapper.AccAndDeptDAO">
+   <resultMap
+            type="springboot_OA.pojo.Dept" id="AccAndDeptResultMap">
+        <result column="deptname" property="deptname" />
+        <result column="deptdesc" property="deptdesc" />
+    </resultMap>
+    <select id="selectDeptAll" parameterType="Integer" resultMap="AccAndDeptResultMap">
+SELECT
+	deptname,deptdesc
+FROM
+	account a
+JOIN dept d ON a.id = #{uid}
+AND a.dept = d.deptname
+</select>
+</mapper>
