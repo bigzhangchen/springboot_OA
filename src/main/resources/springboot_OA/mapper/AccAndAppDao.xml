@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+        namespace="springboot_OA.mapper.AccAndAppDAO">
+   <resultMap
+            type="springboot_OA.pojo.Application" id="AccAndAppResultMap">
+        <result column="id" property="id" />
+        <result column="number" property="number" />
+        <result column="dept" property="dept" />
+        <result column="phone" property="phone" />
+        <result column="reason" property="reason" />
+        <result column="status" property="status" />
+    </resultMap>
+    <select id="selectApplicationAll" parameterType="Integer" resultMap="AccAndAppResultMap">
+SELECT
+    application.id,
+	application.number,
+	application.dept,
+	application.phone,
+	application.reason,
+	application.leavetime,
+	application.status
+FROM
+	account
+JOIN application ON account.id = #{uid}
+AND account.number = application.number;
+</select>
+</mapper>

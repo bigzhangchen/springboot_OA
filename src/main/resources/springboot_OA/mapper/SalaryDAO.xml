@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+        namespace="springboot_OA.mapper.SalaryDAO">
+   <resultMap
+            type="springboot_OA.pojo.Salary" id="SalaryResultMap">
+        <result column="number" property="number" />
+        <result column="login_name" property="loginName" />
+        <result column="salary" property="salary" />
+        <result column="salarystatus" property="salarystatus" />
+        <result column="dept" property="dept" />
+    </resultMap>
+    <select id="selectSalary" parameterType="Integer" resultMap="SalaryResultMap">
+SELECT
+	number,login_name,salary,salarystatus,dept
+FROM
+	account
+WHERE
+    id=#{uid}
+</select>
+</mapper>

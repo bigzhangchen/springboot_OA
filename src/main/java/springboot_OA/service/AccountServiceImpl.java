@@ -1,11 +1,11 @@
 package springboot_OA.service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-import springboot_OA.mapper.AccAndDeptDAO;
-import springboot_OA.mapper.AccountDAO;
-import springboot_OA.mapper.DeptDAO;
+import springboot_OA.mapper.*;
 import springboot_OA.pojo.*;
 
 import java.util.List;
@@ -19,7 +19,15 @@ public class AccountServiceImpl implements AccountService{
     @Autowired
     AccountDAO accountDAO;
     @Autowired
+    ApplicationDAO applicationDAO;
+    @Autowired
     AccAndDeptDAO accAndDeptDAO;
+    @Autowired
+    AccAndAppDAO accAndAppDAO;
+    @Autowired
+    SalaryDAO salaryDAO;
+    @Autowired
+    NoticeDAO noticeDAO;
     @Override
     public List<Account> selectAccountAllById(Integer uid) {
         AccountExample accountExample = new AccountExample();
@@ -40,5 +48,29 @@ public class AccountServiceImpl implements AccountService{
 
         return accAndDeptDAO.selectDeptAll(uid);
 
+    }
+
+    @Override
+    public Application selectApplicationAll(Integer uid) {
+        return accAndAppDAO.selectApplicationAll(uid);
+    }
+
+    @Override
+    public Integer insertApplication(Application application) {
+        Integer row = applicationDAO.insertSelective(application);
+        return row;
+    }
+
+    @Override
+    public Salary selectSalary(Integer uid) {
+        return salaryDAO.selectSalary(uid);
+    }
+
+    @Override
+    public PageInfo selectNoticePage(Integer num, Integer size) {
+        PageHelper.startPage(num,size);
+        List<Notice> noticeList = noticeDAO.selectByExample(null);
+        PageInfo pageInfo = new PageInfo(noticeList);
+        return pageInfo;
     }
 }

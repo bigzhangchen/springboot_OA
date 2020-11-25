@@ -14,3 +14,8 @@ mybatis:
 logging:
   level:
     springboot_OA.mapper: debug
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
