@@ -17,4 +17,6 @@ public interface AccountService {
     public Integer insertApplication(Application application);
     public Salary selectSalary(Integer uid);
     public PageInfo selectNoticePage(Integer num, Integer size);
+    public List<Account> register(Account account);
+    public List<Account> login(String number,String password);
 }

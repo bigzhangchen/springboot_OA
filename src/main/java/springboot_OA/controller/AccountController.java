@@ -3,10 +3,7 @@ package springboot_OA.controller;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import springboot_OA.mapper.AccountDAO;
 import springboot_OA.mapper.RoleDAO;
 import springboot_OA.pojo.*;
@@ -23,6 +20,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/account")
+@CrossOrigin
 public class AccountController {
     @Autowired
     AccountService accountService;

@@ -73,4 +73,25 @@ public class AccountServiceImpl implements AccountService{
         PageInfo pageInfo = new PageInfo(noticeList);
         return pageInfo;
     }
+
+    @Override
+    public List<Account> register(Account account) {
+        //判断用户名是否存在
+        //select * from user where username='admin'
+        AccountExample accountExample = new AccountExample();
+        AccountExample.Criteria criteria = accountExample.or();
+        criteria.andLoginNameEqualTo(account.getLoginName());
+        List<Account> accountList = accountDAO.selectByExample(accountExample);
+        return accountList;
+    }
+
+    @Override
+    public List<Account> login(String number, String password) {
+        AccountExample accountExample = new AccountExample();
+        AccountExample.Criteria criteria = accountExample.or();
+        criteria.andNumberEqualTo(number);
+        criteria.andPasswordEqualTo(password);
+        List<Account> accountList = accountDAO.selectByExample(accountExample);
+        return accountList;
+    }
 }
